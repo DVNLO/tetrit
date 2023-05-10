@@ -38,3 +38,10 @@ add_executable(${TETRIT}
     app/tetrit/main.cpp
 )
 target_link_libraries(${TETRIT} PRIVATE ${LIB_TETRIT})
+
+if(NOT DEFINED BUILD_TEST_LIB_TETRIT)
+    set(BUILD_TEST_LIB_TETRIT 1)
+endif()
+if(${BUILD_TEST_LIB_TETRIT})
+    add_subdirectory(test)
+endif()
