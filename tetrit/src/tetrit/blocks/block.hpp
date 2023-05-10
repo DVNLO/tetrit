@@ -19,7 +19,7 @@ private:
     /**
      * @warning eigen implements *= operator expansion on the rhs (eg: A *= B
      * is equivalent to A = A * B). This is conceptually inconvenient for
-     * rotation operations since it requires a transpose operation to maintain
+     * rotation operations since it requires a transpose to maintain
      * consistency with traditional mathematical notation where matrix A is
      * rotated by matrix R using A = R * A = A * R^T.
      * https://eigen.tuxfamily.org/dox/group__TutorialMatrixArithmetic.html
