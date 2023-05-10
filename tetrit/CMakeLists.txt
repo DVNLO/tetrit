@@ -33,6 +33,16 @@ set(LIB_TETRIT_LINK_OPTIONS
 )
 target_link_options(${LIB_TETRIT} INTERFACE ${LIB_TETRIT_LINK_OPTIONS})
 
+Include(FetchContent)
+FetchContent_Declare(
+    eigen
+    SYSTEM
+    GIT_REPOSITORY https://gitlab.com/libeigen/eigen.git
+    GIT_TAG "3.4"
+)
+FetchContent_MakeAvailable(eigen)
+target_link_libraries(${LIB_TETRIT} INTERFACE Eigen3::Eigen)
+
 set(TETRIT "tetrit")
 add_executable(${TETRIT}
     app/tetrit/main.cpp
