@@ -8,14 +8,14 @@
 namespace tetrit {
 namespace blocks {
 
+template <int point_count>
 class block_t
 {
-    using kernel_t = tetrit::geometry::kernel_t;
-
 public:
+    using kernel_t = tetrit::geometry::kernel_t;
     using value_t = kernel_t::value_t;
     using point_t = kernel_t::point_t;
-    using points_t = kernel_t::points_t;
+    using points_t = kernel_t::points_t<point_count>;
     points_t points;
 
     block_t() = default;

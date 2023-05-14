@@ -27,7 +27,9 @@ public:
      * @ref https://eigen.tuxfamily.org/dox/group__TutorialMatrixClass.html
      */
     using point_t = Eigen::Matrix<value_t, 1, 2>;
-    using points_t = Eigen::Matrix<value_t, Eigen::Dynamic, 2>;
+
+    template <int point_count>
+    using points_t = Eigen::Matrix<value_t, point_count, 2>;
 };
 
 } // namespace geometry

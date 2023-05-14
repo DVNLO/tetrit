@@ -6,7 +6,7 @@
 namespace tetrit {
 namespace blocks {
 
-class tower_t : public block_t
+class tower_t : public block_t<10>
 {
 public:
     tower_t()
