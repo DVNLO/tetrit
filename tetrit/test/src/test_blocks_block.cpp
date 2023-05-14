@@ -49,3 +49,13 @@ TEST_CASE("test_tetrit_blocks_block_points_rotate_ccw")
                                                   { 2, 0 },
                                                   { 0, -2 } });
 }
+
+TEST_CASE("test_tetrit_blocks_block_points_center_of_mass")
+{
+    tetrit::blocks::block_t b;
+    b.points = tetrit::blocks::block_t::points_t{ { 0, 2 },
+                                                  { 2, 0 },
+                                                  { 0, -2 },
+                                                  { -2, 0 } };
+    REQUIRE(b.center_of_mass() == tetrit::blocks::block_t::point_t{ 0, 0 });
+}

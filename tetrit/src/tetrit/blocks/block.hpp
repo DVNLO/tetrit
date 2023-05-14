@@ -23,6 +23,9 @@ public:
      *              (0,0) |------------------|-----> +x
      */
     using value_t = int64_t;
+
+    // https://eigen.tuxfamily.org/dox/group__TutorialMatrixClass.html
+    using point_t = Eigen::Matrix<value_t, 1, 2>;
     using points_t = Eigen::Matrix<value_t, Eigen::Dynamic, 2>;
     points_t points;
 
@@ -52,6 +55,14 @@ public:
      * @note rotation matrix is manually transposed to avoid runtime overhead.
      */
     void rotate_ccw() { points *= rotation_t{ { 0, 1 }, { -1, 0 } }; }
+
+    /**
+     * @brief computes this block's center of mass
+     */
+    point_t center_of_mass()
+    {
+        return point_t{ points.col(0).mean(), points.col(1).mean() };
+    }
 };
 
 } // namespace blocks
