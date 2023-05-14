@@ -2,34 +2,20 @@
 #define TETRIT_BLOCKS_BLOCK_H
 
 #include <cassert>
-#include <cstdint>
 
-#include <Eigen/Core>
+#include "tetrit/geometry/kernel.hpp"
 
 namespace tetrit {
 namespace blocks {
 
 class block_t
 {
-public:
-    /**
-     * @note all blocks are assumed to exist in a 2 dimensional cartesian
-     * coordinate system. The 0-th dimension is the x-axis. The 1-th dimension
-     * is the y-axis. Visually,
-     *                 +y ^
-     *                    |                  |
-     *                    |                  |
-     *                    |                  |
-     *                    |                  |
-     *              (0,0) |------------------|-----> +x
-     *
-     * @note this block's center of mass is its origin
-     */
-    using value_t = int32_t;
+    using kernel_t = tetrit::geometry::kernel_t;
 
-    // https://eigen.tuxfamily.org/dox/group__TutorialMatrixClass.html
-    using point_t = Eigen::Matrix<value_t, 1, 2>;
-    using points_t = Eigen::Matrix<value_t, Eigen::Dynamic, 2>;
+public:
+    using value_t = kernel_t::value_t;
+    using point_t = kernel_t::point_t;
+    using points_t = kernel_t::points_t;
     points_t points;
 
     block_t() = default;

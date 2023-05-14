@@ -4,6 +4,7 @@ target_sources(${LIB_TETRIT} INTERFACE
     src/tetrit/blocks/block.hpp
     src/tetrit/blocks/square.hpp
     src/tetrit/blocks/tower.hpp
+    src/tetrit/geometry/kernel.hpp
 )
 target_include_directories(${LIB_TETRIT} INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 target_compile_features(${LIB_TETRIT} INTERFACE cxx_std_20)

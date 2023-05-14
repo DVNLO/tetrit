@@ -11,6 +11,7 @@ add_executable(${TEST_LIB_TETRIT}
     src/test_blocks_block.cpp
     src/test_blocks_square.cpp
     src/test_blocks_tower.cpp
+    src/test_geometry_kernel.cpp
 )
 target_link_libraries(${TEST_LIB_TETRIT} PRIVATE lib_tetrit)
 target_link_libraries(${TEST_LIB_TETRIT} PRIVATE Catch2::Catch2WithMain)
