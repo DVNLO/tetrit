@@ -9,7 +9,7 @@ FetchContent_MakeAvailable(Catch2)
 set(TEST_LIB_TETRIT "test_lib_tetrit")
 add_executable(${TEST_LIB_TETRIT}
     src/test_blocks_block.cpp
-    src/test_hello_world.cpp
+    src/test_blocks_square.cpp
 )
 target_link_libraries(${TEST_LIB_TETRIT} PRIVATE lib_tetrit)
 target_link_libraries(${TEST_LIB_TETRIT} PRIVATE Catch2::Catch2WithMain)

@@ -11,9 +11,23 @@ namespace blocks {
 class block_t
 {
 public:
+    /**
+     * @note all blocks are assumed to exist in a 2 dimensional cartesian
+     * coordinate system. The 0-th dimension is the x-axis. The 1-th dimension
+     * is the y-axis. Visually,
+     *                 +y ^
+     *                    |                  |
+     *                    |                  |
+     *                    |                  |
+     *                    |                  |
+     *              (0,0) |------------------|-----> +x
+     */
     using value_t = int64_t;
     using points_t = Eigen::Matrix<value_t, Eigen::Dynamic, 2>;
     points_t points;
+
+    block_t() = default;
+    block_t(points_t && points) noexcept : points{ std::move(points) } {}
 
 private:
     /**
