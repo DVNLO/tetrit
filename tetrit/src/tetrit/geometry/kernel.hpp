@@ -11,7 +11,13 @@ namespace geometry {
 class kernel_t
 {
 public:
-    using value_t = std::int32_t;
+    /**
+     * @note use int_fast32_t as fundamental value type for portable and stable
+     * performance with at least 32 bit width.
+     * @ref https://en.cppreference.com/w/cpp/header/cstdint
+     * @ref https://cplusplus.com/reference/cstdint/
+     */
+    using value_t = std::int_fast32_t;
 
     /**
      * @note all points are assumed to exist in a 2 dimensional cartesian
