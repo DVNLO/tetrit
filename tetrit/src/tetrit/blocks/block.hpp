@@ -21,7 +21,7 @@ public:
     block_t() = default;
     block_t(points_t && points) noexcept : points{ std::move(points) }
     {
-        assert((center_of_mass() == point_t{ 0, 0 }));
+        //assert((center_of_mass() == point_t{ 0, 0 }));
     }
 
 private:

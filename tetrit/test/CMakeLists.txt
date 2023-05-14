@@ -9,6 +9,8 @@ FetchContent_MakeAvailable(Catch2)
 set(TEST_LIB_TETRIT "test_lib_tetrit")
 add_executable(${TEST_LIB_TETRIT}
     src/test_blocks_block.cpp
+    src/test_blocks_corner_left.cpp
+    src/test_blocks_corner_right.cpp
     src/test_blocks_square.cpp
     src/test_blocks_tower.cpp
     src/test_geometry_kernel.cpp
