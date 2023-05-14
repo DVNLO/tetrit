@@ -25,7 +25,7 @@ public:
      *
      * @note this block's center of mass is its origin
      */
-    using value_t = int64_t;
+    using value_t = int32_t;
 
     // https://eigen.tuxfamily.org/dox/group__TutorialMatrixClass.html
     using point_t = Eigen::Matrix<value_t, 1, 2>;
