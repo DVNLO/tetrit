@@ -1,3 +1,4 @@
+#include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
 
 #include "tetrit/blocks/corner_right.hpp"
@@ -49,4 +50,30 @@ TEST_CASE("test_tetrit_blocks_corner_right_points_center_of_mass")
     tetrit::blocks::corner_right_t cright;
     REQUIRE(cright.center_of_mass()
             == tetrit::blocks::corner_right_t::point_t{ 0, 0 });
+}
+
+TEST_CASE("test_tetrit_blocks_corner_right_points_rotate_cw_perf")
+{
+    tetrit::blocks::corner_right_t cright;
+    BENCHMARK("test_tetrit_blocks_corner_right_points_rotate_cw_perf_1M")
+    {
+        for(int i{ 0 }; i < 1'000'000; ++i)
+        {
+            cright.rotate_cw();
+        }
+        return cright;
+    };
+}
+
+TEST_CASE("test_tetrit_blocks_corner_right_points_rotate_ccw_perf")
+{
+    tetrit::blocks::corner_right_t cright;
+    BENCHMARK("test_tetrit_blocks_corner_right_points_rotate_ccw_perf_1M")
+    {
+        for(int i{ 0 }; i < 1'000'000; ++i)
+        {
+            cright.rotate_ccw();
+        }
+        return cright;
+    };
 }

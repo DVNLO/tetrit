@@ -7,6 +7,7 @@ target_sources(${LIB_TETRIT} INTERFACE
     src/tetrit/blocks/snake_left.hpp
     src/tetrit/blocks/snake_right.hpp
     src/tetrit/blocks/square.hpp
+    src/tetrit/blocks/tee.hpp
     src/tetrit/blocks/tower.hpp
     src/tetrit/geometry/kernel.hpp
 )
