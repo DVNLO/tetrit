@@ -21,7 +21,7 @@ public:
     block_t() = default;
     block_t(points_t && points) noexcept : points{ std::move(points) }
     {
-        //assert((center_of_mass() == point_t{ 0, 0 }));
+        assert((center_of_mass() == point_t{ 0, 0 }));
     }
 
 private:
@@ -38,13 +38,15 @@ private:
 public:
     /**
      * @brief rotates this object 90 degrees clockwise.
-     * @note rotation matrix is manually transposed to avoid runtime overhead.
+     * @note rotation matrix is manually transposed to avoid the possibility of
+     * runtime overhead.
      */
     void rotate_cw() { points *= rotation_t{ { 0, -1 }, { 1, 0 } }; }
 
     /**
      * @brief rotates this object 90 degrees counter-clockwise.
-     * @note rotation matrix is manually transposed to avoid runtime overhead.
+     * @note rotation matrix is manually transposed to avoid the possibility of
+     * runtime overhead.
      */
     void rotate_ccw() { points *= rotation_t{ { 0, 1 }, { -1, 0 } }; }
 
