@@ -28,13 +28,16 @@ public:
      *                    |                  |
      *                    |                  |
      *              (0,0) |------------------|-----> +x
-     *
+     * @note points are rows
+     * @note vectors are columns
      * @ref https://eigen.tuxfamily.org/dox/group__TutorialMatrixClass.html
      */
     using point_t = Eigen::Matrix<value_t, 1, 2>;
-
+    using vector_t = Eigen::Matrix<value_t, 2, 1>;
     template <int point_count>
     using points_t = Eigen::Matrix<value_t, point_count, 2>;
+    using basis_t = Eigen::Matrix<value_t, 2, 2>;
+    using rotation_t = Eigen::Matrix<value_t, 2, 2>;
 };
 
 } // namespace tetrit::geometry

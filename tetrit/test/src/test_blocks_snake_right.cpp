@@ -6,16 +6,24 @@
 TEST_CASE("test_tetrit_blocks_snake_right_default")
 {
     tetrit::blocks::snake_right_t sright;
-    REQUIRE(sright.points.NumDimensions == 2);
-    REQUIRE(sright.points.cols() == 2);
-    REQUIRE(sright.points.rows() == 10);
+    REQUIRE(sright.position().NumDimensions == 1);
+    REQUIRE(sright.position()
+            == tetrit::blocks::snake_right_t::point_t{ 0, 0 });
+    REQUIRE(sright.orientation().NumDimensions == 2);
+    REQUIRE(sright.orientation().cols() == 2);
+    REQUIRE(sright.orientation().rows() == 2);
+    REQUIRE(sright.orientation()
+            == tetrit::blocks::snake_right_t::basis_t{ { 1, 0 }, { 0, 1 } });
+    REQUIRE(sright.points().NumDimensions == 2);
+    REQUIRE(sright.points().cols() == 2);
+    REQUIRE(sright.points().rows() == 10);
 }
 
 TEST_CASE("test_tetrit_blocks_snake_right_points_rotate_cw")
 {
     tetrit::blocks::snake_right_t sright;
     sright.rotate_cw();
-    REQUIRE(sright.points
+    REQUIRE(sright.render()
             == tetrit::blocks::snake_right_t::points_t{ { -1, 0 },
                                                         { -1, -1 },
                                                         { -1, -2 },
@@ -32,7 +40,7 @@ TEST_CASE("test_tetrit_blocks_snake_right_points_rotate_ccw")
 {
     tetrit::blocks::snake_right_t sright;
     sright.rotate_ccw();
-    REQUIRE(sright.points
+    REQUIRE(sright.render()
             == tetrit::blocks::snake_right_t::points_t{ { 1, 0 },
                                                         { 1, 1 },
                                                         { 1, 2 },
@@ -48,34 +56,49 @@ TEST_CASE("test_tetrit_blocks_snake_right_points_rotate_ccw")
 TEST_CASE("test_tetrit_blocks_snake_right_points_center_of_mass")
 {
     tetrit::blocks::snake_right_t sright;
-    REQUIRE(sright.center_of_mass()
+    REQUIRE(sright.centroid()
             == tetrit::blocks::snake_right_t::point_t{ 0, 0 });
 }
 
 TEST_CASE("test_tetrit_blocks_snake_right_points_rotate_cw_perf")
 {
-    tetrit::blocks::snake_right_t cright;
+    tetrit::blocks::snake_right_t sright;
     BENCHMARK("test_tetrit_blocks_snake_right_points_rotate_cw_perf_1M")
     {
         int constexpr count{ 1'000'000 };
         for(int i{ 0 }; i < count; ++i)
         {
-            cright.rotate_cw();
+            sright.rotate_cw();
         }
-        return cright;
+        return sright;
     };
 }
 
 TEST_CASE("test_tetrit_blocks_snake_right_points_rotate_ccw_perf")
 {
-    tetrit::blocks::snake_right_t cright;
+    tetrit::blocks::snake_right_t sright;
     BENCHMARK("test_tetrit_blocks_snake_right_points_rotate_ccw_perf_1M")
     {
         int constexpr count{ 1'000'000 };
         for(int i{ 0 }; i < count; ++i)
         {
-            cright.rotate_ccw();
+            sright.rotate_ccw();
         }
-        return cright;
+        return sright;
+    };
+}
+
+TEST_CASE("test_tetrit_blocks_snake_right_points_render_perf")
+{
+    tetrit::blocks::snake_right_t sright;
+    BENCHMARK("test_tetrit_blocks_snake_right_points_render_perf_1M")
+    {
+        tetrit::blocks::snake_right_t::points_t tmp;
+        int constexpr count{ 1'000'000 };
+        for(int i{ 0 }; i < count; ++i)
+        {
+            tmp = sright.render();
+        }
+        return tmp;
     };
 }
