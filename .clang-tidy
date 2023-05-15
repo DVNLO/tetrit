@@ -1,0 +1,14 @@
+# https://clang.llvm.org/extra/clang-tidy/
+# https://stackoverflow.com/questions/70081393/clang-tidy-config-format
+Checks: '-*,
+         bugprone-*,
+         cert-*,
+         clang-analyzer-*,
+         concurrency-*,
+         cppcoreguidelines-*,
+         hicpp-*,
+         modernize-*,
+         performance-*,
+         portability-*,
+         readability-*,
+         -readability-identifier-length'

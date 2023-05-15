@@ -5,8 +5,7 @@
 
 #include "tetrit/geometry/kernel.hpp"
 
-namespace tetrit {
-namespace blocks {
+namespace tetrit::blocks {
 
 template <int point_count>
 class block_t
@@ -19,7 +18,8 @@ public:
     points_t points;
 
     block_t() = default;
-    block_t(points_t && points) noexcept : points{ std::move(points) } {}
+    explicit block_t(points_t && points) noexcept : points{ std::move(points) }
+    {}
 
 private:
     /**
@@ -38,25 +38,24 @@ public:
      * @note rotation matrix is manually transposed to avoid the possibility of
      * runtime overhead.
      */
-    void rotate_cw() { points *= rotation_t{ { 0, -1 }, { 1, 0 } }; }
+    auto rotate_cw() -> void { points *= rotation_t{ { 0, -1 }, { 1, 0 } }; }
 
     /**
      * @brief rotates this object 90 degrees counter-clockwise.
      * @note rotation matrix is manually transposed to avoid the possibility of
      * runtime overhead.
      */
-    void rotate_ccw() { points *= rotation_t{ { 0, 1 }, { -1, 0 } }; }
+    auto rotate_ccw() -> void { points *= rotation_t{ { 0, 1 }, { -1, 0 } }; }
 
     /**
      * @brief computes this block's center of mass
      */
-    point_t center_of_mass()
+    [[nodiscard]] auto center_of_mass() const -> point_t
     {
         return point_t{ points.col(0).mean(), points.col(1).mean() };
     }
 };
 
-} // namespace blocks
-} // namespace tetrit
+} // namespace tetrit::blocks
 
 #endif // TETRIT_BLOCKS_BLOCK_H

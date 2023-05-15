@@ -5,8 +5,7 @@
 
 #include <Eigen/Core>
 
-namespace tetrit {
-namespace geometry {
+namespace tetrit::geometry {
 
 class kernel_t
 {
@@ -38,7 +37,6 @@ public:
     using points_t = Eigen::Matrix<value_t, point_count, 2>;
 };
 
-} // namespace geometry
-} // namespace tetrit
+} // namespace tetrit::geometry
 
 #endif // TETRIT_BLOCKS_BLOCK_H

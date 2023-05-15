@@ -3,8 +3,7 @@
 
 #include "tetrit/blocks/block.hpp"
 
-namespace tetrit {
-namespace blocks {
+namespace tetrit::blocks {
 
 class corner_left_t : public block_t<10>
 {
@@ -23,7 +22,6 @@ public:
     {}
 };
 
-} // namespace blocks
-} // namespace tetrit
+} // namespace tetrit::blocks
 
 #endif // TETRIT_BLOCKS_CORNER_LEFT_H

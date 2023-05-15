@@ -20,6 +20,10 @@ add_executable(${TEST_LIB_TETRIT}
 )
 target_link_libraries(${TEST_LIB_TETRIT} PRIVATE lib_tetrit)
 target_link_libraries(${TEST_LIB_TETRIT} PRIVATE Catch2::Catch2WithMain)
+set_target_properties(${TEST_LIB_TETRIT}
+    PROPERTIES CXX_CLANG_TIDY
+    "clang-tidy;-warnings-as-errors=*;-header-filter=${PROJECT_SOURCE_DIR}/tetrit"
+)
 include(CTest)
 include(Catch)
 catch_discover_tests(${TEST_LIB_TETRIT})

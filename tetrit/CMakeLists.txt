@@ -34,12 +34,17 @@ set(LIB_TETRIT_COMPILE_FLAGS
     "-O3"
     "-flto"
     "-fno-common"
+    "-funroll-loops"
 )
 target_compile_options(${LIB_TETRIT} INTERFACE ${LIB_TETRIT_COMPILE_FLAGS})
 set(LIB_TETRIT_LINK_OPTIONS
     ${LIB_TETRIT_COMPILE_FLAGS}
 )
 target_link_options(${LIB_TETRIT} INTERFACE ${LIB_TETRIT_LINK_OPTIONS})
+set_target_properties(${LIB_TETRIT}
+    PROPERTIES CXX_CLANG_TIDY
+    "clang-tidy;-warnings-as-errors=*;-header-filter=${PROJECT_SOURCE_DIR}/tetrit"
+)
 
 Include(FetchContent)
 FetchContent_Declare(

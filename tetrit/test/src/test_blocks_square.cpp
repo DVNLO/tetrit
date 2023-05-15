@@ -54,7 +54,8 @@ TEST_CASE("test_tetrit_blocks_square_points_rotate_cw_perf")
     tetrit::blocks::square_t sqr;
     BENCHMARK("test_tetrit_blocks_square_points_rotate_cw_perf_1M")
     {
-        for(int i{ 0 }; i < 1'000'000; ++i)
+        int constexpr count{ 1'000'000 };
+        for(int i{ 0 }; i < count; ++i)
         {
             sqr.rotate_cw();
         }
@@ -67,7 +68,8 @@ TEST_CASE("test_tetrit_blocks_square_points_rotate_ccw_perf")
     tetrit::blocks::square_t sqr;
     BENCHMARK("test_tetrit_blocks_square_points_rotate_ccw_perf_1M")
     {
-        for(int i{ 0 }; i < 1'000'000; ++i)
+        int constexpr count{ 1'000'000 };
+        for(int i{ 0 }; i < count; ++i)
         {
             sqr.rotate_ccw();
         }
