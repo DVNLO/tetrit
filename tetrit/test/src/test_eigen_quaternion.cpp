@@ -96,6 +96,7 @@ TEST_CASE("test_eigen_benchmark")
     radian_t<double> const yaw{ to_radian(degree_t<double>(d(gen))) };
     Eigen::Matrix<double, 3, -1> M{ Eigen::MatrixXd::Random(3, 1048576) };
 
+    Eigen::Vector3d const b0{ 1, 1, 1 };
     Eigen::Vector3d const b{ d(gen), d(gen), d(gen) };
     // NOLINTEND(*-magic-numbers)
 
@@ -127,7 +128,7 @@ TEST_CASE("test_eigen_benchmark")
     BENCHMARK("test_eigen_quaternion_benchmark_direction")
     {
         Eigen::Quaterniond q;
-        q = Eigen::Quaterniond::FromTwoVectors(Eigen::Vector3d{ 1, 1, 1 }, b);
+        q = Eigen::Quaterniond::FromTwoVectors(b0, b);
         q.normalize();
         return q.toRotationMatrix() * M;
     };

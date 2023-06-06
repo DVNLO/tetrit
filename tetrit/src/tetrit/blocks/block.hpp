@@ -1,8 +1,6 @@
 #ifndef TETRIT_BLOCKS_BLOCK_H
 #define TETRIT_BLOCKS_BLOCK_H
 
-#include <cassert>
-
 #include "tetrit/geometry/kernel.hpp"
 
 namespace tetrit::blocks {
@@ -12,13 +10,12 @@ class block_t
 {
 public:
     static constexpr int point_count{ point_count_v };
-    using kernel_t = tetrit::geometry::kernel_t;
-    using value_t = kernel_t::value_t;
-    using point_t = kernel_t::point_t;
-    using vector_t = kernel_t::vector_t;
-    using points_t = kernel_t::points_t<point_count>;
-    using basis_t = kernel_t::basis_t;
-    using rotation_t = kernel_t::rotation_t;
+    using value_t = tetrit::geometry::kernel::value_t;
+    using point_t = tetrit::geometry::kernel::point_t;
+    using vector_t = tetrit::geometry::kernel::vector_t;
+    using points_t = tetrit::geometry::kernel::points_t<point_count>;
+    using basis_t = tetrit::geometry::kernel::basis_t;
+    using rotation_t = tetrit::geometry::kernel::rotation_t;
 
 private:
     point_t position_val{ 0, 0 }; // of the centroid
